@@ -1,0 +1,126 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+i{
+    font-size: 128px;
+    width: 150px;
+    margin-top: 17px;
+}
+
+.fa-angular{color: #b52e31;}
+.fa-react{color: #00d8ff;}
+.fa-vuejs{color: #42b883;}
+.fa-html5{color: #e34f26;}
+.fa-css3{color: #4367db;}
+.fa-js{color: #f7df1e;}
+.fa-sass{color: #cd6799;}
+.fa-node{
+    color: #215732;
+    font-size: 110px;
+    line-height: 1.2;}
+.fa-github{color: #4078c0;}
+.fa-ubuntu{color: #dd4814;}
+
+.control-buttons{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: rgba($color: #082035, $alpha: .9);
+
+    span{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        color: #fff;
+        background-color: #f44336;
+        padding: 15px 25px;
+        font-size: 35px;
+        text-align: center;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+}
+
+.info-container{
+    width: 880px;
+    margin: 20px auto 0;
+    background-color: #f6f6f6;
+    padding: 20px;
+    font-size: 24px;
+    overflow: hidden;
+    border: 2px solid #75009d;
+
+    .name{
+        float: left;
+        width: 50%;
+    }
+    .tries{
+        float: right;
+        text-align: right;
+    }
+}
+
+.memory-game-blocks{
+    display: flex;
+    width: 900px;
+    flex-wrap: wrap;
+    margin: 20px auto;
+
+    .game-block{
+        // height: 200px;
+        transition: transform .5s;
+        transform-style: preserve-3d;
+        cursor: pointer;
+        position: relative;
+        // flex: 1 0 200px;
+        margin: 0 10px 20px;
+        height: 160px;
+        width: 160px;
+
+        .front{
+            background-color: #333;
+            line-height: 160px;
+
+            &::before{
+                content: '!';
+                color: #FFF;
+                font-size: 140px;
+                font-weight: bold;
+            }
+        }
+        .back{
+            background-color: #f4f4f4;
+            color: #082035;
+            transform: rotateY(180deg);
+        }
+        .face{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            backface-visibility: hidden;
+            outline: 4px solid #0f4674;
+        }
+        &.is-flipped{
+            transform: rotateY(-180deg);
+            pointer-events: none;
+        }
+        &.matched{
+            transform: rotateY(-180deg);
+            pointer-events: none;
+        }
+    }
+
+    &.no-clicking{
+        pointer-events: none; // IMP!! doesn't respond to events while active
+    }
+}
